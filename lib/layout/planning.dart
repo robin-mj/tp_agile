@@ -134,7 +134,7 @@ class Planning extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+                    padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -148,7 +148,7 @@ class Planning extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+                    padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -183,7 +183,7 @@ class Planning extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(100.0, 0, 100.0, 0),
+                    padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

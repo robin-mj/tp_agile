@@ -20,7 +20,7 @@ class _EmployeeListState extends State<EmployeeList> {
         borderRadius: BorderRadius.all(Radius.circular(10)),
         color: Colors.white,
       ),
-      margin: const EdgeInsets.only(left: 40, top: 20, right: 40, bottom: 20),
+      margin: const EdgeInsets.only(left: 40, top: 20, right: 40, bottom: 70),
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(

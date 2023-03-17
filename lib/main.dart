@@ -18,12 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Sakartone',
-      theme: ThemeData.from(colorScheme: ColorScheme.fromSeed(seedColor: Color(0xfffeb701))),
+      theme: ThemeData.from(
+          colorScheme: ColorScheme.fromSeed(seedColor: Color(0xfffeb701))),
       routes: {
         '/': (context) => const MainPage(),
-        '/employees': (context) => const EmployeeList(),
         '/employee': (context) => const EmployeeDetails(),
-        '/planning': (context) => const Planning(),
         '/add-employee': (context) => const AddEmployee(),
       },
       initialRoute: '/',
@@ -55,40 +54,50 @@ class _MainPageState extends State<MainPage> {
       'Planning',
     ];
     return Scaffold(
-        backgroundColor: const Color(0xfffeb701),
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          title: Text(
-              tabNames.elementAt(_selectedIndex),
-            style: GoogleFonts.roboto(
-                textStyle: const TextStyle(fontWeight: FontWeight.bold)),
+      backgroundColor: const Color(0xfffeb701),
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text(
+          tabNames.elementAt(_selectedIndex),
+          style: GoogleFonts.roboto(
+              textStyle: const TextStyle(fontWeight: FontWeight.bold)),
+        ),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
+      bottomNavigationBar: FlashyTabBar(
+        animationCurve: Curves.linear,
+        selectedIndex: _selectedIndex,
+        showElevation: true,
+        onItemSelected: (index) => setState(() {
+          _selectedIndex = index;
+        }),
+        backgroundColor: Colors.white,
+        items: [
+          FlashyTabBarItem(
+            icon: const Icon(Icons.home),
+            title: const Text('Accueil'),
           ),
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-        ),
-        bottomNavigationBar: FlashyTabBar(
-          animationCurve: Curves.linear,
-          selectedIndex: _selectedIndex,
-          showElevation: true,
-          onItemSelected: (index) => setState(() {
-            _selectedIndex = index;
-          }),
-          backgroundColor: Colors.white,
-          items: [
-            FlashyTabBarItem(
-              icon: const Icon(Icons.home),
-              title: const Text('Accueil'),
-            ),
-            FlashyTabBarItem(
-              icon: const Icon(Icons.list),
-              title: const Text('Employés'),
-            ),
-            FlashyTabBarItem(
-              icon: const Icon(Icons.calendar_month),
-              title: const Text('Planning'),
-            ),
-          ],
-        ),
-        body: pageList.elementAt(_selectedIndex));
+          FlashyTabBarItem(
+            icon: const Icon(Icons.list),
+            title: const Text('Employés'),
+          ),
+          FlashyTabBarItem(
+            icon: const Icon(Icons.calendar_month),
+            title: const Text('Planning'),
+          ),
+        ],
+      ),
+      body: pageList.elementAt(_selectedIndex),
+      floatingActionButton: Visibility(
+        visible: _selectedIndex == 1,
+        child: FloatingActionButton(
+          backgroundColor: Colors.black,
+            child: new Icon(Icons.add), onPressed: () {
+              Navigator.pushNamed(context, '/add-employee');
+        }),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
   }
 }
