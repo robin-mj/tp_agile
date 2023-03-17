@@ -1,0 +1,60 @@
+import 'package:<yourAppName>/model/workers_model.dart';
+
+List<Worker> workers = [
+  Worker(
+    firstname: 'Olivia',
+    name: 'Katam',
+    startdate: '18-12-2021',
+    wages: '128',
+    workingdays: ['Ma', 'Me', 'V', 'S'],
+    team: 'Client',
+  ),
+  Worker(
+    firstname: 'David',
+    name: 'Meyer',
+    startdate: '01-02-2022',
+    wages: '80',
+    workingdays: ['L', 'Ma', 'Me', 'V', 'S'],
+    team: 'Carton',
+  ),
+  Worker(
+    firstname: 'Tom',
+    name: 'Mori',
+    startdate: '18-02-2022',
+    wages: '155',
+    workingdays: ['Ma', 'Me', 'J', 'V', 'S'],
+    team: 'Scotch',
+  ),
+  Worker(
+    firstname: 'Inès',
+    name: 'Gamet',
+    startdate: '09-03-2022',
+    wages: '155',
+    workingdays: ['J', 'V', 'S'],
+    team: 'Scotch',
+  ),
+  Worker(
+    firstname: 'Marcus',
+    name: 'Garcia',
+    startdate: '07-05-2022',
+    wages: '135',
+    workingdays: ['L', 'Ma', 'Me', 'J', 'V'],
+    team: 'Carton',
+  ),
+  Worker(
+    firstname: 'Jean',
+    name: 'Vallier',
+    startdate: '02-01-2022',
+    wages: '100',
+    workingdays: ['L', 'Ma', 'V', 'S'],
+    team: 'Scotch',
+  ),
+  Worker(
+    firstname: 'Murielle',
+    name: 'Massot',
+    startdate: '01-02-2022',
+    wages: '112',
+    workingdays: ['L', 'Ma', 'Me', 'V', 'S'],
+    team: 'Carton',
+  ),
+];
