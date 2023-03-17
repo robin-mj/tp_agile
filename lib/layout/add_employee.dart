@@ -82,95 +82,127 @@ class _AddEmployeeState extends State<AddEmployee> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfffeb701),
       appBar: AppBar(
         title: const Text('Ajouter un employé'),
+        backgroundColor: Colors.black,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          child: Column(
-            children: [
-              TextFormField(
-                controller: firstnameController,
-                decoration: const InputDecoration(
-                  labelText: 'Prénom',
-                ),
-              ),
-              TextFormField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Nom',
-                ),
-              ),
-              TextFormField(
-                controller: startdateController,
-                decoration: const InputDecoration(
-                  labelText: 'Date d\'embauche (ex: jj-mm-aaaa)',
-                ),
-              ),
-              TextFormField(
-                controller: wagesController,
-                decoration: const InputDecoration(
-                  labelText: 'Salaire',
-                ),
-              ),
-              TextFormField(
-                controller: workingdaysController,
-                decoration: const InputDecoration(
-                  labelText: 'Jours travaillés (ex: L,Ma,Me,J,V,S))',
-                ),
-              ),
-              Row(
-                children: [
-                  const Text('Équipe : '),
-                  DropdownButton<String>(
-                    value: dropdownValue,
-                    icon: const Icon(Icons.arrow_downward),
-                    elevation: 16,
-                    underline: Container(
-                      height: 2,
-                    ),
-                    onChanged: (String? value) {
-                      // This is called when the user selects an item.
-                      setState(() {
-                        dropdownValue = value!;
-                      });
-                    },
-                    items: teams.map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                  ),
-                ],
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  if (dataIsValid()) {
-                    List<String> workingDaysList =
-                        workingdaysController.text.split(',');
-                    worker.firstname = firstnameController.text;
-                    worker.name = nameController.text;
-                    worker.startdate = startdateController.text;
-                    worker.wages = wagesController.text;
-                    worker.workingdays = workingDaysList;
-                    worker.team = dropdownValue;
-
-                    workers.add(worker);
-
-                    Navigator.pushNamed(context, '/employees');
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const EmployeeList(),
+        padding: const EdgeInsets.all(30.0),
+        child: Container(
+          padding: const EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          child: Form(
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: firstnameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Prénom',
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xfffeb701),
                       ),
-                    );
-                  }
-                },
-                child: const Text('Ajouter'),
-              ),
-            ],
+                    ),
+                  ),
+                ),
+                TextFormField(
+                  controller: nameController,
+                  decoration: const InputDecoration(
+                    labelText: 'Nom',
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xfffeb701),
+                      ),
+                    ),
+                  ),
+                ),
+                TextFormField(
+                  controller: startdateController,
+                  decoration: const InputDecoration(
+                    labelText: 'Date d\'embauche (ex: jj-mm-aaaa)',
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xfffeb701),
+                      ),
+                    ),
+                  ),
+                ),
+                TextFormField(
+                  controller: wagesController,
+                  decoration: const InputDecoration(
+                    labelText: 'Salaire',
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xfffeb701),
+                      ),
+                    ),
+                  ),
+                ),
+                TextFormField(
+                  controller: workingdaysController,
+                  decoration: const InputDecoration(
+                    labelText: 'Jours travaillés (ex: L,Ma,Me,J,V,S))',
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xfffeb701),
+                      ),
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    const Text('Équipe : '),
+                    DropdownButton<String>(
+                      value: dropdownValue,
+                      icon: const Icon(Icons.arrow_downward),
+                      elevation: 16,
+                      underline: Container(
+                        height: 2,
+                      ),
+                      onChanged: (String? value) {
+                        // This is called when the user selects an item.
+                        setState(() {
+                          dropdownValue = value!;
+                        });
+                      },
+                      items:
+                          teams.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xfffeb701),
+                  ),
+                  onPressed: () {
+                    if (dataIsValid()) {
+                      List<String> workingDaysList =
+                          workingdaysController.text.split(',');
+                      worker.firstname = firstnameController.text;
+                      worker.name = nameController.text;
+                      worker.startdate = startdateController.text;
+                      worker.wages = wagesController.text;
+                      worker.workingdays = workingDaysList;
+                      worker.team = dropdownValue;
+
+                      workers.add(worker);
+
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: const Text('Ajouter'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

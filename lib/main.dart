@@ -92,10 +92,11 @@ class _MainPageState extends State<MainPage> {
       floatingActionButton: Visibility(
         visible: _selectedIndex == 1,
         child: FloatingActionButton(
-          backgroundColor: Colors.black,
-            child: new Icon(Icons.add), onPressed: () {
+            backgroundColor: Colors.black,
+            child: new Icon(Icons.add),
+            onPressed: () {
               Navigator.pushNamed(context, '/add-employee');
-        }),
+            }),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
