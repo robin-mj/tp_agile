@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tp_agile/layout/employee_detail.dart';
 import 'package:tp_agile/model/workers_model.dart';
 
 class EmployeeListItem extends StatefulWidget {
@@ -15,10 +16,10 @@ class _EmployeeListItemState extends State<EmployeeListItem> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        /*Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => ProductDetails(product: widget.product)));*/
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => EmployeeDetails(worker: widget.worker)));
       },
       child: Card(
         margin: EdgeInsets.all(5),

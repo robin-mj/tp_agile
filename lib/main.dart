@@ -2,7 +2,6 @@ import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tp_agile/data/worker_data.dart';
-
 import 'layout/home.dart';
 import 'layout/employee_list.dart';
 import 'layout/employee_detail.dart';
@@ -24,9 +23,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Color(0xfffeb701))),
       routes: {
         '/': (context) => const MainPage(),
-        '/employee': (context) => EmployeeDetails(
-              worker: workers[0],
-            ),
+        '/employee': (context) => EmployeeDetails(worker: workers[0],),
         '/add-employee': (context) => const AddEmployee(),
       },
       initialRoute: '/',
