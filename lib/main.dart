@@ -5,6 +5,7 @@ import 'layout/home.dart';
 import 'layout/employee_list.dart';
 import 'layout/employee_detail.dart';
 import 'layout/planning.dart';
+import 'layout/add_employee.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         '/employees': (context) => const EmployeeList(),
         '/employee': (context) => const EmployeeDetails(),
         '/planning': (context) => const Planning(),
+        '/add-employee': (context) => const AddEmployee(),
       },
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
