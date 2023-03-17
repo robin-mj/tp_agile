@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tp_agile/data/worker_data.dart';
+import 'package:tp_agile/layout/employee_list.dart';
 import 'package:tp_agile/model/workers_model.dart';
 
 const List<String> teams = <String>['Carton', 'Client', 'Scotch'];
@@ -38,7 +39,7 @@ class _AddEmployeeState extends State<AddEmployee> {
     super.dispose();
   }
 
-  void validateData() {
+  bool dataIsValid() {
     if (firstnameController.text.isEmpty ||
         nameController.text.isEmpty ||
         startdateController.text.isEmpty ||
@@ -49,7 +50,7 @@ class _AddEmployeeState extends State<AddEmployee> {
           content: Text('Veuillez remplir tous les champs'),
         ),
       );
-      return;
+      return false;
     }
 
     final RegExp dateRegex =
@@ -61,7 +62,7 @@ class _AddEmployeeState extends State<AddEmployee> {
           content: Text('Veuillez entrer une date valide'),
         ),
       );
-      return;
+      return false;
     }
 
     final RegExp workingDayRegex =
@@ -73,8 +74,10 @@ class _AddEmployeeState extends State<AddEmployee> {
           content: Text('Veuillez entrer les jours en suivant le format donné'),
         ),
       );
-      return;
+      return false;
     }
+
+    return true;
   }
 
   Widget build(BuildContext context) {
@@ -144,20 +147,26 @@ class _AddEmployeeState extends State<AddEmployee> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  validateData();
+                  if (dataIsValid()) {
+                    List<String> workingDaysList =
+                        workingdaysController.text.split(',');
+                    worker.firstname = firstnameController.text;
+                    worker.name = nameController.text;
+                    worker.startdate = startdateController.text;
+                    worker.wages = wagesController.text;
+                    worker.workingdays = workingDaysList;
+                    worker.team = dropdownValue;
 
-                  List<String> workingDaysList =
-                      workingdaysController.text.split(',');
-                  worker.firstname = firstnameController.text;
-                  worker.name = nameController.text;
-                  worker.startdate = startdateController.text;
-                  worker.wages = wagesController.text;
-                  worker.workingdays = workingDaysList;
-                  worker.team = dropdownValue;
+                    workers.add(worker);
 
-                  workers.add(worker);
-
-                  Navigator.pushNamed(context, '/employees');
+                    Navigator.pushNamed(context, '/employees');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const EmployeeList(),
+                      ),
+                    );
+                  }
                 },
                 child: const Text('Ajouter'),
               ),
