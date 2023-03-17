@@ -1,4 +1,4 @@
-import 'package:<yourAppName>/model/workers_model.dart';
+import 'package:tp_agile/model/workers_model.dart';
 
 List<Worker> workers = [
   Worker(
