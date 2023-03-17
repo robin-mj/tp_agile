@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:tp_agile/data/worker_data.dart';
 import 'package:tp_agile/model/workers_model.dart';
 
@@ -40,15 +37,6 @@ class _AddEmployeeState extends State<AddEmployee> {
     workingdaysController.dispose();
     super.dispose();
   }
-
-  // void initState() {
-  //   firstnameController.text = 'Robin';
-  //   nameController.text = 'MJ';
-  //   startdateController.text = '01-01-2022';
-  //   wagesController.text = '150';
-  //   workingdaysController.text = 'L,J,S';
-  //   return super.initState();
-  // }
 
   void validateData() {
     if (firstnameController.text.isEmpty ||
