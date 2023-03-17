@@ -97,7 +97,7 @@ class _MainPageState extends State<MainPage> {
               Navigator.pushNamed(context, '/add-employee');
         }),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
