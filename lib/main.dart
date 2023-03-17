@@ -1,6 +1,8 @@
 import 'package:flashy_tab_bar2/flashy_tab_bar2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tp_agile/data/worker_data.dart';
+
 import 'layout/home.dart';
 import 'layout/employee_list.dart';
 import 'layout/employee_detail.dart';
@@ -22,7 +24,9 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Color(0xfffeb701))),
       routes: {
         '/': (context) => const MainPage(),
-        '/employee': (context) => const EmployeeDetails(),
+        '/employee': (context) => EmployeeDetails(
+              worker: workers[0],
+            ),
         '/add-employee': (context) => const AddEmployee(),
       },
       initialRoute: '/',
@@ -92,10 +96,11 @@ class _MainPageState extends State<MainPage> {
       floatingActionButton: Visibility(
         visible: _selectedIndex == 1,
         child: FloatingActionButton(
-          backgroundColor: Colors.black,
-            child: new Icon(Icons.add), onPressed: () {
+            backgroundColor: Colors.black,
+            child: new Icon(Icons.add),
+            onPressed: () {
               Navigator.pushNamed(context, '/add-employee');
-        }),
+            }),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
